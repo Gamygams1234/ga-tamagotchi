@@ -1,6 +1,284 @@
-h1{
-    color: red;
-    font-style: italic;
+@keyframes jump {
+
+    0% {
+        top: 50%;
+    }
+
+    50% {
+        top: 35%;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+
+@keyframes forwardBackward {
+
+    0% {
+        left: 24px;
+    }
+
+    50% {
+        left: calc(100% - 24px);
+    }
+
+    100% {
+        left: 24px;
+    }
+}
+
+
+
+.fw-100 {
+    font-weight: 100;
+}
+
+.fw-200 {
+    font-weight: 200;
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+
+
+.fw-600 {
+    font-weight: 600;
+    font-family: "Barlow", sans-serif;
+}
+
+.fw-700 {
+    font-weight: 700;
+    font-family: "Fraunces", serif;
+}
+
+.fw-900 {
+    font-weight: 900;
+    font-family: "Fraunces", serif;
+}
+
+body {
+    background-color: hsl(202, 77%, 61%);
+}
+
+.btn {
+    background-color: #4CAF50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: .75rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+    border-radius: .5rem;
+
+}
+
+
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  input[type=text]:focus {
+    // background-color: lightblue;
+  }
+  // clears the outline
+  input[type=number]:focus-visible{
+    outline: -webkit-focus-ring-color auto 0px;
+  }
+
+
+
+
+.outside-container {
+    // on the out side
+    padding-left: 24px;
+    padding-right: 24px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#start-screen {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1{
+        margin-bottom: 2rem;
+    }
+    .icon{
+        font-size: 6rem;
+        margin-bottom: 2rem;
+    }
+
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        .btn{
+            width: 100%;
+            background-color: hsl(320,98%,65%);
+        }
+    }
+}
+
+.inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+
+// this is the game screen
+#game-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    h1 {
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+    }
+
+    .icon {
+        position: relative;
+        height: 200px;
+        width: 100%;
+
+        .cat-icon {
+            position: absolute;
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: jump 2s linear infinite, forwardBackward 7s linear infinite;
+
+        }
+    }
+
+    .metrics {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .metric-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .label {
+                margin-bottom: 1rem;
+                font-size: 1.5rem;
+            }
+
+        }
+    }
+
+}
+
+// here I am going to make the stats responsive somewhat
+.stats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .progress {
+        width: 100%;
+        border-radius: .5rem;
+        overflow: hidden;
+        background-color: grey;
+        height: 43px;
+        margin-bottom: 1rem;
+
+        .bar {
+            width: 50%;
+            height: 100%;
+            background-color: green;
+        }
+    }
+
+    .btn {
+        margin-left: 0rem;
+    }
+
+}
+
+
+@media (min-width: 576px) {
+    .stats {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+
+        .progress {
+            width: 100%;
+            border-radius: .5rem;
+            overflow: hidden;
+            background-color: grey;
+            margin-bottom: 0rem;
+
+            .bar {
+                width: 50%;
+                height: 100%;
+                background-color: green;
+            }
+        }
+
+        .btn {
+            margin-left: 1rem;
+        }
+
+    }
 
 
 }
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 1400px) {}
