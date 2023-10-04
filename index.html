@@ -5,45 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tamagotchi</title>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:wght@700;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./dist/reset.css" />
-    <link rel="stylesheet" href="./dist/styles.css" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="outside-container">
       <div class="inner-container">
         <div id="start-screen" class="start-screen">
-          <h1 class="fw-900">Meet your new pet!</h1>
+          <h1 class="fw-900">Smelly Cat!</h1>
           <div class="icon">
-            <div class="cat-icon">&#128568;</div>
+            <div class="cat-icon">&#128572;</div>
           </div>
+          <h2 class="fw-900">The Game!</h2>
 
           <form id="petNameForm">
             <input id="petNameInput" type="text" placeholder="Name your cat here!" />
+            <p id="warning-label" class="fw-600">Please enter a name!</p>
             <button type="submit" class="btn fw-700">Start Game</button>
           </form>
         </div>
         <!-- the end of the start screen -->
         <div id="game-screen" class="game-screen">
-          <h1 id = "pet-title" class="fw-900">Cat Tamagotchi</h1>
+          <h1 id="pet-title" class="fw-900">Time To Play The Game!</h1>
           <div class="icon">
-            <div class="cat-icon">&#128568;</div>
+            <div id="playing-icon" class="play-icon">&#128568;</div>
           </div>
+
+          <h2 id="pet-age" class="fw-900">Age:</h2>
           <div class="metrics">
             <div class="metric-group">
-              <div class="fw-700 label">Health</div>
+              <div class="fw-700 label">Hunger</div>
               <div class="stats">
                 <div class="progress">
-                  <div class="bar"></div>
+                  <div id="hunger-indicator" class="bar"></div>
                 </div>
-                <button class="button btn">Increase</button>
+                <button id="feed-btn" class="button btn">Feed</button>
+              </div>
+            </div>
+            <div class="metric-group">
+              <div class="fw-700 label">Boredom</div>
+              <div class="stats">
+                <div class="progress">
+                  <div id="boredom-indicator" class="bar"></div>
+                </div>
+                <button id="play-btn" class="button btn">Play</button>
+              </div>
+            </div>
+            <div class="metric-group">
+              <div class="fw-700 label">Tiredness</div>
+              <div class="stats">
+                <div class="progress">
+                  <div id="sleep-indicator" class="bar"></div>
+                </div>
+                <button id="sleep-btn" class="button btn">Sleep</button>
               </div>
             </div>
           </div>
         </div>
         <!-- the end of the game screen -->
+
+        <div id="lose-screen" class="lose-screen">
+          <h1 class="fw-900">Sorry That Your Cat Died!</h1>
+          <div class="icon">
+            <div class="cat-icon">&#128128;</div>
+          </div>
+          <h2 class="fw-900" id="dead-msg">RIP John Cena</h2>
+          <h3 class="fw-900" id="dead-msg-age">Age: 12</h3>
+          <div class="end-game-buttons">
+            <button class="button btn new-game-btn">New Game</button>
+            <button class="button btn restart-btn">Restart</button>
+          </div>
+        </div>
+        <div id="win-screen" class="win-screen">
+          <h1 class="fw-900" id="win-msg">Your Cat Is In Heaven Now!</h1>
+          <div class="icon">
+            
+            <div class="cat-icon">🕊️</div>     </div>
+            <h2 class="fw-900" id="dead-msg">RIP John Cena</h2>
+            <h3 class="fw-900" id="dead-msg-age">Age: 12</h3>
+     
+          <div class="end-game-buttons">
+            <button class="button btn new-game-btn">New Game</button>
+            <button class="button btn restart-btn">Restart</button>
+          </div>
+        </div>
       </div>
     </div>
 
-    <script src="./app/app.js"></script>
+    <script src="./app.js"></script>
   </body>
 </html>
