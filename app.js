@@ -242,6 +242,8 @@ function startGame(name) {
       gameScreen.style.display = "none";
       winScreen.style.display = "flex";
       loseScreen.style.display = "none";
+      document.getElementById("dead-msg-win").innerHTML = `RIP ${cat.getName()}`;
+      document.getElementById("dead-msg-age-win").innerHTML = `Age: ${cat.getAge()}`;
       clearInterval(timerInterval);
     }
   }
