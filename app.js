@@ -238,6 +238,7 @@ function startGame(name) {
       document.getElementById("dead-msg").innerHTML = `RIP ${cat.getName()}`;
       document.getElementById("dead-msg-age").innerHTML = `Age: ${cat.getAge()}`;
       clearInterval(timerInterval);
+      document.getElementById("inner-container").classList.remove("dark");
     } else if (cat.getAge() >= 13) {
       gameScreen.style.display = "none";
       winScreen.style.display = "flex";
@@ -245,6 +246,7 @@ function startGame(name) {
       document.getElementById("dead-msg-win").innerHTML = `RIP ${cat.getName()}`;
       document.getElementById("dead-msg-age-win").innerHTML = `Age: ${cat.getAge()}`;
       clearInterval(timerInterval);
+      document.getElementById("inner-container").classList.remove("dark");
     }
   }
 }
