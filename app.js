@@ -27,6 +27,8 @@ const playingIcon = document.getElementById("playing-icon");
 // warning for the name
 const warningLabel = document.getElementById("warning-label");
 
+let restartGameButtons = document.querySelectorAll(".restart-btn");
+let newGameButtons = document.querySelectorAll(".new-game-btn");
 // audio
 
 // const smellyCat = new Audio("./app/smellyCat.mp3");
@@ -42,8 +44,8 @@ class Cat {
     this.boredom = 0;
     this.age = 0;
     this.name = name;
-    this.sleepIcon = "&#128575;"
-    this.wokeIcon = "&#128568;"
+    this.sleepIcon = "&#128575;";
+    this.wokeIcon = "&#128568;";
     this.sleeping = false;
   }
 
@@ -68,8 +70,8 @@ class Cat {
       boredomIndicator.classList.remove("warning");
     }
   }
-  getName(){
-    return this.name
+  getName() {
+    return this.name;
   }
 
   //   getters
@@ -122,23 +124,26 @@ class Cat {
   }
 }
 
+
+
 function startGame(name) {
+
   let globalSeconds = 0;
-  let gameOver = false;
-  let cat = new Cat(name)
-  console.log(cat)
+  let cat = new Cat(name);
   petAge.innerHTML = `Age: ${cat.age.toString()}`;
 
+ 
+
   //   getting restart game and newGame buttons
-
-  let restartGameButtons = document.querySelectorAll(".restart-btn");
-  let newGameButtons = document.querySelectorAll(".new-game-btn");
-
   playingIcon.innerHTML = cat.wokeIcon;
   playingIcon.className = "play-icon";
   sleepBtn.innerHTML = "Sleep";
   playBtn.removeAttribute("disabled");
   feedBtn.removeAttribute("disabled");
+  document.getElementById("inner-container").classList.remove("dark");
+
+ 
+
   //   timer interval
   function addSeconds() {
     globalSeconds += 1;
@@ -154,10 +159,10 @@ function startGame(name) {
         cat.setSleepiness(cat.getSleepiness() - 2);
       }
     }
-    if(cat.getAge()==9){
-        cat.wokeIcon = "&#129409;"
-        cat.sleepIcon = "&#128164;"
-      setAvatar()
+    if (cat.getAge() == 9) {
+      cat.wokeIcon = "&#129409;";
+      cat.sleepIcon = "&#128164;";
+      setAvatar();
     }
     if (globalSeconds % 4 == 0) {
       cat.setAge(cat.getAge() + 1);
@@ -175,25 +180,27 @@ function startGame(name) {
     cat.calculateMetrics();
   });
 
-  function setAvatar(){
+  function setAvatar() {
     if (cat.getSleeping()) {
-        playingIcon.innerHTML = cat.sleepIcon;
-        playingIcon.className = "sleep-icon";
-        sleepBtn.innerHTML = "Wake";
-        feedBtn.setAttribute("disabled", ""); 
-        playBtn.setAttribute("disabled", ""); 
-      } else {
-        playingIcon.innerHTML = cat.wokeIcon;
-        playingIcon.className = "play-icon";
-        sleepBtn.innerHTML = "Sleep";
-        playBtn.removeAttribute("disabled");
-        feedBtn.removeAttribute("disabled");
-      }
+      playingIcon.innerHTML = cat.sleepIcon;
+      playingIcon.className = "sleep-icon";
+      sleepBtn.innerHTML = "Wake";
+      feedBtn.setAttribute("disabled", "");
+      playBtn.setAttribute("disabled", "");
+      document.getElementById("inner-container").classList.add("dark");
+    } else {
+      playingIcon.innerHTML = cat.wokeIcon;
+      playingIcon.className = "play-icon";
+      sleepBtn.innerHTML = "Sleep";
+      playBtn.removeAttribute("disabled");
+      feedBtn.removeAttribute("disabled");
+      document.getElementById("inner-container").classList.remove("dark");
+    }
   }
+
   sleepBtn.addEventListener("click", () => {
     cat.setSleeping();
-    setAvatar()
-
+    setAvatar();
   });
   playBtn.addEventListener("click", () => {
     cat.setBoredom(cat.getBoredom() - 2);
@@ -205,8 +212,8 @@ function startGame(name) {
       gameScreen.style.display = "flex";
       startScreen.style.display = "none";
       winScreen.style.display = "none";
-      loseScreen.style.display = "none"; 
- 
+      loseScreen.style.display = "none";
+
       clearInterval(timerInterval);
       startGame(cat.name);
     });
@@ -217,7 +224,7 @@ function startGame(name) {
       startScreen.style.display = "flex";
       winScreen.style.display = "none";
       loseScreen.style.display = "none";
-     
+
       clearInterval(timerInterval);
     });
   });
@@ -228,8 +235,8 @@ function startGame(name) {
       loseScreen.style.display = "flex";
       gameScreen.style.display = "none";
       winScreen.style.display = "none";
-      document.getElementById("dead-msg").innerHTML = `RIP ${cat.getName()}`
-      document.getElementById("dead-msg-age").innerHTML= `Age: ${cat.getAge()}`
+      document.getElementById("dead-msg").innerHTML = `RIP ${cat.getName()}`;
+      document.getElementById("dead-msg-age").innerHTML = `Age: ${cat.getAge()}`;
       clearInterval(timerInterval);
     } else if (cat.getAge() >= 13) {
       gameScreen.style.display = "none";
@@ -237,8 +244,6 @@ function startGame(name) {
       loseScreen.style.display = "none";
       clearInterval(timerInterval);
     }
-
-  
   }
 }
 
@@ -247,9 +252,8 @@ petNameForm.addEventListener("submit", (e) => {
   if (petNameInput.value.trim() === "") {
     petNameForm.classList.add("warning");
   } else {
-
     startGame(petNameInput.value.trim());
-    petNameInput.value=""
+    petNameInput.value = "";
     gameScreen.style.display = "flex";
     startScreen.style.display = "none";
 
